@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoelie Lord Kim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo active">Home</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero-section" id="heroSection">
+            <div class="profile-container fade-in">
+                <img src="assets/P1010738_Original.jpeg" alt="Profile Photo" class="profile-photo" id="profile-photo">
+                <div class="profile-info">
+                    <h1 class="hero-title">Zoelie Lord Kim</h1>
+                    <p class="tagline">Data Science and Philosophy at Berkeley</p>
+                    <div class="cta-container">
+                        <button class="text-cta" id="aboutBtn">About</button>
+                        <a href="#projects" class="text-cta" id="projectsBtn">Projects</a>
+                        <a href="#" class="text-cta" target="_blank">Resume</a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="mailto:zoeliekim@gmail.com" class="icon-button" aria-label="Email">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/zoelie-kim/" class="icon-button" aria-label="LinkedIn" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="https://github.com/zoelie-kim" class="icon-button" aria-label="GitHub" target="_blank">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-divider fade-in"></div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="aboutSection">
+            <button class="back-button" id="backBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 12H5M5 12l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Back</span>
+            </button>
+            <div class="two-column-reveal fade-in">
+                <div class="column-left">
+                    <div class="reveal-item" data-reveal="0">
+                        <span class="reveal-statement">I study patterns.</span>
+                        <div class="reveal-content">
+                            <p>Data science allows me to recognize patterns in complex datasets, finding meaningful insights that drive decision-making and innovation.</p>
+                        </div>
+                    </div>
+                    <div class="reveal-item" data-reveal="1">
+                        <span class="reveal-statement">I care about meaning.</span>
+                        <div class="reveal-content">
+                            <p>Philosophy teaches me to question, interpret, and understand the deeper meaning behind data, technology, and human experience.</p>
+                        </div>
+                    </div>
+                    <div class="reveal-item" data-reveal="2">
+                        <span class="reveal-statement">I build things that clarify.</span>
+                        <div class="reveal-content">
+                            <p>My projects combine analytical rigor with philosophical inquiry, creating tools and insights that make complex information accessible and meaningful.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column-right">
+                    <div class="reveal-expanded" id="revealExpanded"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects-section" id="projects">
+            <h1 class="page-title">Projects</h1>
+            
+            <div class="projects-container">
+                <div class="project-card">
+                    <h2 class="project-title">Project Title 1</h2>
+                    <p class="project-category">Computer Science</p>
+                    <p class="project-description">
+                        Brief description of your project. Explain what it does, technologies used, and key features.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">React</span>
+                        <span class="tag">Node.js</span>
+                    </div>
+                    <a href="#" class="project-link" target="_blank">View Project →</a>
+                </div>
+
+                <div class="project-card">
+                    <h2 class="project-title">Project Title 2</h2>
+                    <p class="project-category">Data Science</p>
+                    <p class="project-description">
+                        Brief description of your project. Explain what it does, technologies used, and key features.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Pandas</span>
+                        <span class="tag">Machine Learning</span>
+                    </div>
+                    <a href="#" class="project-link" target="_blank">View Project →</a>
+                </div>
+
+                <div class="project-card">
+                    <h2 class="project-title">Project Title 3</h2>
+                    <p class="project-category">Computer Science</p>
+                    <p class="project-description">
+                        Brief description of your project. Explain what it does, technologies used, and key features.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">API</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="#" class="project-link" target="_blank">View Project →</a>
+                </div>
+
+                <div class="project-card">
+                    <h2 class="project-title">Project Title 4</h2>
+                    <p class="project-category">Data Science</p>
+                    <p class="project-description">
+                        Brief description of your project. Explain what it does, technologies used, and key features.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">R</span>
+                        <span class="tag">Data Visualization</span>
+                        <span class="tag">Statistics</span>
+                    </div>
+                    <a href="#" class="project-link" target="_blank">View Project →</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Page view toggle
+        const aboutBtn = document.getElementById('aboutBtn');
+        const backBtn = document.getElementById('backBtn');
+        const projectsBtn = document.getElementById('projectsBtn');
+        const heroSection = document.getElementById('heroSection');
+        const aboutSection = document.getElementById('aboutSection');
+        const body = document.body;
+        const revealItems = document.querySelectorAll('.reveal-item');
+        const revealExpanded = document.getElementById('revealExpanded');
+
+        function showAbout() {
+            // Hide icons immediately with no delay
+            const socialIcons = document.querySelector('.social-icons');
+            if (socialIcons) {
+                socialIcons.style.transition = 'none';
+                socialIcons.style.opacity = '0';
+                socialIcons.style.visibility = 'hidden';
+                socialIcons.style.pointerEvents = 'none';
+            }
+            
+            // Then transition the sections
+            heroSection.classList.add('hidden');
+            aboutSection.classList.add('active');
+            body.classList.add('about-view');
+        }
+
+        function showHome() {
+            heroSection.classList.remove('hidden');
+            aboutSection.classList.remove('active');
+            body.classList.remove('about-view');
+            
+            // Show icons again - restore transition and visibility
+            const socialIcons = document.querySelector('.social-icons');
+            if (socialIcons) {
+                socialIcons.style.transition = '';
+                socialIcons.style.opacity = '1';
+                socialIcons.style.visibility = 'visible';
+                socialIcons.style.pointerEvents = 'auto';
+            }
+            
+            // Clear active states
+            revealItems.forEach(item => item.classList.remove('active'));
+            if (revealExpanded) {
+                revealExpanded.innerHTML = '';
+                revealExpanded.style.opacity = '0';
+            }
+        }
+
+        function showRevealContent(item) {
+            const content = item.querySelector('.reveal-content').innerHTML;
+            revealItems.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+            if (revealExpanded) {
+                revealExpanded.innerHTML = content;
+                revealExpanded.style.opacity = '1';
+            }
+        }
+
+        aboutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showAbout();
+        });
+        
+        backBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showHome();
+        });
+
+        projectsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectsSection = document.getElementById('projects');
+            const navbar = document.querySelector('.navbar');
+            const navHeight = navbar ? navbar.offsetHeight : 0;
+            const elementPosition = projectsSection.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - navHeight - 20; // Extra 20px for closer spacing
+            
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        });
+
+        // Two-column reveal interactions
+        revealItems.forEach((item) => {
+            item.addEventListener('mouseenter', () => showRevealContent(item));
+            item.addEventListener('click', () => showRevealContent(item));
+        });
+    </script>
+</body>
+</html>
+
