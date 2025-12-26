@@ -19,6 +19,8 @@ html {
     --color-overlay: #0000003d;
     --color-red: #DB1216;
     --color-green: #04A32A;
+    --color-blue-bg: #F0F8FF; /* Light blue - update with exact color from image */
+    --color-blue-nav: #E0EFFF; /* Slightly darker blue for navbar */
 }
 
 body {
@@ -26,7 +28,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: var(--color-black);
-    background-color: var(--color-white);
+    background-color: var(--color-blue-bg);
     line-height: 1.6;
     min-height: 100vh;
     display: flex;
@@ -41,7 +43,7 @@ body {
 
 /* Navigation */
 .navbar {
-    background-color: var(--color-white);
+    background-color: var(--color-blue-bg);
     border-bottom: 1px solid var(--color-gray);
     padding: 1rem 0;
     position: sticky;
@@ -171,7 +173,7 @@ body {
 
 .hero-title {
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.08em;
     margin-bottom: 1.25rem;
     line-height: 1.3;
@@ -180,7 +182,7 @@ body {
 
 .tagline {
     font-size: 0.9375rem;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--color-silver);
     line-height: 1.6;
     margin: 0 0 2rem 0;
@@ -202,7 +204,7 @@ body {
     color: var(--color-black);
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9375rem;
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
@@ -401,6 +403,39 @@ body.about-view .projects-section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.4s ease, transform 0.4s ease;
+    position: relative;
+}
+
+/* About Section Decorative Elements */
+.about-decoration {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.about-decoration-top-right {
+    top: 3rem;
+    right: 3rem;
+    width: 200px;
+    height: 200px;
+}
+
+.about-decoration-bottom-left {
+    bottom: 3rem;
+    left: 3rem;
+    width: 200px;
+    height: 200px;
+}
+
+.about-decoration svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.two-column-reveal {
+    position: relative;
+    z-index: 2;
 }
 
 .about-section.active {
@@ -471,10 +506,36 @@ body.about-view .projects-section {
     font-size: 1.25rem;
     font-weight: 400;
     letter-spacing: 0.02em;
-    color: var(--color-black);
-    display: block;
+    color: var(--color-silver);
+    display: inline-block;
     line-height: 1.5;
-    transition: opacity 0.3s ease;
+    transition: color 0.25s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.reveal-statement::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-black);
+    transition: width 0.3s ease;
+}
+
+.reveal-item:hover .reveal-statement::after {
+    width: 100%;
+}
+
+.reveal-item:hover .reveal-statement {
+    color: var(--color-black);
+    opacity: 1;
+}
+
+.reveal-item.active .reveal-statement {
+    color: var(--color-black);
 }
 
 .reveal-content {
