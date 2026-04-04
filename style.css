@@ -472,6 +472,25 @@ body.about-view .projects-section {
     height: 16px;
 }
 
+.about-text {
+    max-width: 40rem;
+    margin: 0 auto;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+    color: var(--color-black);
+}
+
+.about-text p {
+    margin: 0 0 1.25em;
+}
+
+.about-text p:last-child {
+    margin-bottom: 0;
+}
+
 /* Two-Column Reveal */
 .two-column-reveal {
     display: grid;

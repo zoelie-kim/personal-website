@@ -61,30 +61,11 @@
                 </svg>
                 <span>Back</span>
             </button>
-            <div class="two-column-reveal fade-in">
-                <div class="column-left">
-                    <div class="reveal-item" data-reveal="0">
-                        <span class="reveal-statement">I study patterns.</span>
-                        <div class="reveal-content">
-                            <p>Data science allows me to recognize patterns in complex datasets, finding meaningful insights that drive decision-making and innovation.</p>
-                        </div>
-                    </div>
-                    <div class="reveal-item" data-reveal="1">
-                        <span class="reveal-statement">I care about meaning.</span>
-                        <div class="reveal-content">
-                            <p>Philosophy teaches me to question, interpret, and understand the deeper meaning behind data, technology, and human experience.</p>
-                        </div>
-                    </div>
-                    <div class="reveal-item" data-reveal="2">
-                        <span class="reveal-statement">I build things that clarify.</span>
-                        <div class="reveal-content">
-                            <p>My projects combine analytical rigor with philosophical inquiry, creating tools and insights that make complex information accessible and meaningful.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="column-right">
-                    <div class="reveal-expanded" id="revealExpanded"></div>
-                </div>
+            <div class="about-text fade-in">
+                <p>Hi! I'm Zoelie, a Dean's List student at UC Berkeley studying Data Science and Philosophy with an interest in shaping technology that centers human wellbeing and ensuring it's deployed responsibly.</p>
+                <p>Since I can remember, I've always had an instinct to learn. In first grade, I begged my mom to let me watch YouTube videos on how to complete a special knitting stitch because they didn't teach it until the next grade and I couldn't wait. My love of learning has only deepened over time. I get energized tracking variables in a programming environment diagram and grappling with philosophical proof reconstruction. This has led me to become an interdisciplinary learner at my core and has pivotally led me to teaching.</p>
+                <p>As a teaching assistant, I learned what resonates with students. I picked up which final few words make a concept click or how to sketch a visual that intuitively explains an idea. Through my data science coursework and ML projects, I've learned how to bring this skill to different domains. In my club, I help technical builders understand the human impact and ethical implications of what they create by connecting their technical decisions to real human consequences and AI alignment concerns. In my go-to-market work, I enjoy translating technical capabilities into language that helps audiences understand the value in both the product and the vision.</p>
+                <p>I'm drawn to working between different worlds because that's where meaningful solutions exist and where I feel most engaged. As I continue building, I'm collecting these experiences intentionally so I can develop the discernment and expertise that comes from understanding the full picture.</p>
             </div>
         </section>
 
@@ -140,8 +121,6 @@
         const heroSection = document.getElementById('heroSection');
         const aboutSection = document.getElementById('aboutSection');
         const body = document.body;
-        const revealItems = document.querySelectorAll('.reveal-item');
-        const revealExpanded = document.getElementById('revealExpanded');
 
         function showAbout() {
             // Hide icons immediately with no delay
@@ -173,22 +152,6 @@
                 socialIcons.style.pointerEvents = 'auto';
             }
             
-            // Clear active states
-            revealItems.forEach(item => item.classList.remove('active'));
-            if (revealExpanded) {
-                revealExpanded.innerHTML = '';
-                revealExpanded.style.opacity = '0';
-            }
-        }
-
-        function showRevealContent(item) {
-            const content = item.querySelector('.reveal-content').innerHTML;
-            revealItems.forEach(i => i.classList.remove('active'));
-            item.classList.add('active');
-            if (revealExpanded) {
-                revealExpanded.innerHTML = content;
-                revealExpanded.style.opacity = '1';
-            }
         }
 
         aboutBtn.addEventListener('click', (e) => {
@@ -213,12 +176,6 @@
                 top: offsetPosition,
                 behavior: 'smooth'
             });
-        });
-
-        // Two-column reveal interactions
-        revealItems.forEach((item) => {
-            item.addEventListener('mouseenter', () => showRevealContent(item));
-            item.addEventListener('click', () => showRevealContent(item));
         });
     </script>
 </body>
