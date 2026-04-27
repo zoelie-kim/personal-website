@@ -44,16 +44,16 @@
                     <h2 class="project-title">EEG Gait Decoder</h2>
                     <p class="project-category">ML &amp; Neurotechnology</p>
                     <p class="project-description">
-                        Ongoing project with Neurotech@Berkeley: building a self-supervised autoencoder to decode gait angles from EEG in spinal cord injury patients. Encoder pretrains on signal reconstruction, then fine-tunes for joint angle prediction. Poster in progress for April 2026 conference.
+                        Built a hybrid TCN-LSTM pipeline to decode gait phase and ankle angle from 64-channel EEG data, targeting real-time BCI control for neuroprosthetics and robotic exoskeletons. The TCN detects heel-strikes and outputs a latent vector; the LSTM uses this alongside cyclically encoded gait phase to predict continuous ankle angle. Achieved a mean AUC of 0.924 for heel-strike detection and R² of 0.735 for ankle angle prediction. Presented at conference with Neurotech@Berkeley, April 2026.
                     </p>
                     <div class="project-tags">
                         <span class="tag">PyTorch</span>
-                        <span class="tag">Self-supervised learning</span>
+                        <span class="tag">TCN</span>
+                        <span class="tag">LSTM</span>
                         <span class="tag">EEG</span>
-                        <span class="tag">Autoencoder</span>
                         <span class="tag">BCI</span>
                     </div>
-                    <a href="https://github.com/kazumah1/gait-decoding" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
+                    <a href="assets/Gait%20Intent%20Decoding%20Poster.pdf" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
                 </div>
             </div>
         </section>
