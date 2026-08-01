@@ -541,6 +541,125 @@ body.about-view .projects-section {
     margin-bottom: 0;
 }
 
+/* Photo Carousel */
+.photo-carousel {
+    margin-top: 4.5rem;
+}
+
+/* Positioning context for the overlaid arrows. */
+.carousel-frame {
+    position: relative;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--color-black);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* translateY has to be repeated here or the hover state would drop the
+   vertical centring and the button would jump down half its height. */
+.carousel-btn:hover {
+    background-color: var(--color-white);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-btn-prev {
+    left: 0.875rem;
+}
+
+.carousel-btn-next {
+    right: 0.875rem;
+}
+
+/* Native horizontal scrolling, so trackpad swipe and touch drag work for free
+   and the buttons just nudge the same scroll position. */
+.carousel-viewport {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+}
+
+.carousel-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+}
+
+.carousel-item {
+    scroll-snap-align: start;
+    position: relative;
+    flex: 0 0 auto;
+    height: 260px;
+    margin: 0 1rem 0 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--color-gray);
+}
+
+.carousel-item img {
+    display: block;
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+}
+
+.carousel-item figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem 0.875rem 0.75rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: var(--color-white);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.04em;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-item:hover figcaption,
+.carousel-item:focus-within figcaption {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Smooth scrolling can trigger motion sensitivity, so jump instantly instead. */
+@media (prefers-reduced-motion: reduce) {
+    .carousel-viewport {
+        scroll-behavior: auto;
+    }
+
+    .carousel-item figcaption {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* Two-Column Reveal */
 .two-column-reveal {
     display: grid;
@@ -765,6 +884,35 @@ body.about-view .projects-section {
         font-size: 1.875rem;
         margin-bottom: 2.5rem;
         text-align: left;
+    }
+
+    .photo-carousel {
+        margin-top: 3rem;
+    }
+
+    .carousel-item {
+        height: 190px;
+        margin-right: 0.75rem;
+    }
+
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .carousel-btn-prev {
+        left: 0.5rem;
+    }
+
+    .carousel-btn-next {
+        right: 0.5rem;
+    }
+
+    /* Touch devices have no hover, so captions stay visible. */
+    .carousel-item figcaption {
+        opacity: 1;
+        transform: none;
+        font-size: 0.6875rem;
     }
 }
 
