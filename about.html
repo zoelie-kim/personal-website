@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>About - Zoelie Lord Kim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Zoélie Lord Kim</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html" class="active">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="about-section">
+            <h1 class="page-title">About</h1>
+            <div class="about-text fade-in">
+                <p>Hi! I'm Zoelie, a Dean's List student at UC Berkeley studying Data Science and Philosophy. I'm interested in how evolving tech is changing people's lives, so I think a lot about how to build systems that people can understand and trust.</p>
+                <!--
+                <p>Since I can remember, I've had a strong instinct to learn. In first grade, I begged my mom to let me watch YouTube videos to learn a knitting stitch my school wasn't teaching yet, because I didn't want to wait. That instinct hasn't changed. When something is interesting, I tend to follow it until it makes sense, whether that's tracking variables in an environment diagram or working through a conceptual proof.</p>
+                <p>This curiosity led me to teaching, because I wanted to understand what makes certain topics compelling and how people actually grasp them. As a teaching assistant, I learned that small shifts, like a final phrase or a simple visual, can make something click. I bring this to the work I'm currently doing. For example, in technical projects, I help builders understand the human impact of what they're creating, so they can make better decisions early, before unintended consequences become real problems. In go-to-market work, I translate technical capabilities into language people can understand, so the value is clear to those it's meant to serve.</p>
+                <p>I'm drawn to roles that involve ethical, analytical, and behavioral themes, because that's where understanding and better decisions happen. As I continue building, I'm collecting these experiences intentionally, so I can develop the discernment to help myself and others see the full picture: how technology is built, understood, and experienced for the benefit of all.</p>
+                -->
+            </div>
+
+            <!-- Photo carousel. Edit captions here only — script.js clones this
+                 list at runtime so the strip loops without a visible seam. -->
+            <section class="photo-carousel fade-in">
+                <div class="carousel-frame">
+                    <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Previous photos">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Next photos">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <div class="carousel-viewport">
+                        <div class="carousel-track">
+                            <figure class="carousel-item">
+                                <img src="assets/photos/norway-fjord.jpg" alt="Standing with arms outstretched at the summit of Mt. Prest, high above a Norwegian fjord" width="1066" height="800" loading="lazy">
+                                <figcaption>Mt. Prest, Norway (4,800 ft)</figcaption>
+                            </figure>
+                            <figure class="carousel-item">
+                                <img src="assets/photos/dance-fog.jpg" alt="Ballet pose in silhouette in a foggy field at sunrise" width="800" height="1066" loading="lazy">
+                                <figcaption>Ballet in the fog</figcaption>
+                            </figure>
+                            <figure class="carousel-item">
+                                <img src="assets/photos/campfire.jpg" alt="Friends around a campfire at Pomo Canyon with a guitar" width="1066" height="800" loading="lazy">
+                                <figcaption>Campfire at Pomo Canyon</figcaption>
+                            </figure>
+                            <figure class="carousel-item">
+                                <img src="assets/photos/nutcracker.jpg" alt="Mid-leap on stage during a Nutcracker performance" width="1066" height="800" loading="lazy">
+                                <figcaption>Nutcracker, 2019</figcaption>
+                            </figure>
+                            <figure class="carousel-item">
+                                <img src="assets/photos/snowboarding.jpg" alt="Standing with a snowboard on a slope in heavy fog" width="800" height="1066" loading="lazy">
+                                <figcaption>Snowboarding in a whiteout</figcaption>
+                            </figure>
+                            <figure class="carousel-item">
+                                <img src="assets/photos/coast-fieldwork.jpg" alt="Two people with survey equipment on a coastal trail" width="1066" height="800" loading="lazy">
+                                <figcaption>Fieldwork on the coast</figcaption>
+                            </figure>
+                            <figure class="carousel-item">
+                                <img src="assets/photos/campanile.jpg" alt="The Berkeley Campanile at dusk with the moon behind it" width="661" height="800" loading="lazy">
+                                <figcaption>Campanile, Berkeley campus</figcaption>
+                            </figure>
+                            <figure class="carousel-item">
+                                <img src="assets/photos/guitar-polaroid.jpg" alt="A polaroid of someone playing electric guitar, propped on a plant pot" width="576" height="800" loading="lazy">
+                                <figcaption>Learning guitar</figcaption>
+                            </figure>
+                            <figure class="carousel-item">
+                                <img src="assets/photos/tidepool-star.jpg" alt="A purple sea star on a barnacle-covered rock" width="800" height="1066" loading="lazy">
+                                <figcaption>Tidepooling</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

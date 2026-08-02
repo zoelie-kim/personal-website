@@ -17,13 +17,13 @@ if (projectsSection) {
     observer.observe(projectsSection);
 }
 
-// Intersection Observer for project cards
+// Intersection Observer for project rows
 const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
 };
 
-const cardObserver = new IntersectionObserver((entries) => {
+const entryObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
         if (entry.isIntersecting) {
             setTimeout(() => {
@@ -33,9 +33,9 @@ const cardObserver = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Observe project cards for scroll animations
-document.querySelectorAll('.project-card').forEach(card => {
-    cardObserver.observe(card);
+// Observe project rows for scroll animations
+document.querySelectorAll('.project-entry').forEach(row => {
+    entryObserver.observe(row);
 });
 
 // Photo carousel: an endless strip driven by native horizontal scrolling, so
@@ -105,16 +105,6 @@ if (carouselViewport && carouselTrack && carouselPrev && carouselNext) {
         clearTimeout(settleTimer);
         settleTimer = setTimeout(recentre, 140);
     }, { passive: true });
-
-    // The carousel lives inside a display:none section, so it measures 0x0
-    // until About opens — park it on the middle copy at that point. The
-    // timeout defers past the separate handler that adds the .active class.
-    const aboutTrigger = document.getElementById('aboutBtn');
-    if (aboutTrigger) {
-        aboutTrigger.addEventListener('click', () => {
-            setTimeout(() => jumpTo(copyWidth()), 0);
-        });
-    }
 
     jumpTo(copyWidth());
 }

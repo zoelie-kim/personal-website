@@ -11,22 +11,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo active">Home</a>
-        </div>
-    </nav>
-
     <main class="main-content">
-        <section class="hero-section" id="heroSection">
+        <section class="hero-section">
             <div class="profile-container hero-panel fade-in">
                 <img src="assets/P1010738_Original.jpeg" alt="Profile Photo" class="profile-photo" id="profile-photo">
                 <div class="profile-info">
                     <h1 class="hero-title">Zoélie Lord Kim</h1>
                     <p class="tagline">Data Science + Philosophy @ Berkeley</p>
                     <div class="cta-container">
-                        <button class="text-cta" id="aboutBtn">About</button>
-                        <a href="#projects" class="text-cta" id="projectsBtn">Projects</a>
+                        <a href="about.html" class="text-cta">About</a>
+                        <a href="projects.html" class="text-cta">Projects</a>
                         <a href="assets/Zoelie%20Kim%20resume%204.3.26.pdf" class="text-cta" target="_blank" rel="noopener noreferrer">Resume</a>
                     </div>
                     <div class="social-icons">
@@ -51,124 +45,8 @@
                     </div>
                 </div>
             </div>
-            <div class="scroll-divider fade-in"></div>
         </section>
 
-        <!-- About Section -->
-        <section class="about-section" id="aboutSection">
-            <button class="back-button" id="backBtn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 12H5M5 12l6-6m-6 6l6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Back</span>
-            </button>
-            <div class="about-text fade-in">
-                <p>Hi! I'm Zoelie, a Dean's List student at UC Berkeley studying Data Science and Philosophy. I'm interested in how evolving tech is changing people's lives, so I think a lot about how to build systems that people can understand and trust.</p>
-                <!--
-                <p>Since I can remember, I've had a strong instinct to learn. In first grade, I begged my mom to let me watch YouTube videos to learn a knitting stitch my school wasn't teaching yet, because I didn't want to wait. That instinct hasn't changed. When something is interesting, I tend to follow it until it makes sense, whether that's tracking variables in an environment diagram or working through a conceptual proof.</p>
-                <p>This curiosity led me to teaching, because I wanted to understand what makes certain topics compelling and how people actually grasp them. As a teaching assistant, I learned that small shifts, like a final phrase or a simple visual, can make something click. I bring this to the work I'm currently doing. For example, in technical projects, I help builders understand the human impact of what they're creating, so they can make better decisions early, before unintended consequences become real problems. In go-to-market work, I translate technical capabilities into language people can understand, so the value is clear to those it's meant to serve.</p>
-                <p>I'm drawn to roles that involve ethical, analytical, and behavioral themes, because that's where understanding and better decisions happen. As I continue building, I'm collecting these experiences intentionally, so I can develop the discernment to help myself and others see the full picture: how technology is built, understood, and experienced for the benefit of all.</p>
-                -->
-            </div>
-
-            <!-- Photo carousel -->
-            <div class="photo-carousel fade-in">
-                <div class="carousel-frame">
-                    <button class="carousel-btn carousel-btn-prev" id="carouselPrev" aria-label="Previous photos">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <button class="carousel-btn carousel-btn-next" id="carouselNext" aria-label="Next photos">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <div class="carousel-viewport">
-                        <div class="carousel-track">
-                            <figure class="carousel-item">
-                                <img src="assets/photos/norway-fjord.jpg" alt="Standing with arms outstretched at the summit of Mt. Prest, high above a Norwegian fjord" width="1066" height="800" loading="lazy">
-                                <figcaption>Mt. Prest, Norway (4,800 ft)</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/dance-fog.jpg" alt="Ballet pose in silhouette in a foggy field at sunrise" width="800" height="1066" loading="lazy">
-                                <figcaption>Ballet in the fog</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/neurotech-poster.jpg" alt="Presenting the gait intent decoding poster at a conference" width="1066" height="800" loading="lazy">
-                                <figcaption>California Neurotech Conference 2026</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/campfire.jpg" alt="Friends around a campfire at Pomo Canyon with a guitar" width="1066" height="800" loading="lazy">
-                                <figcaption>Campfire at Pomo Canyon</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/nutcracker.jpg" alt="Mid-leap on stage during a Nutcracker performance" width="1066" height="800" loading="lazy">
-                                <figcaption>Nutcracker, 2019</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/snowboarding.jpg" alt="Standing with a snowboard on a slope in heavy fog" width="800" height="1066" loading="lazy">
-                                <figcaption>Snowboarding in a whiteout</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/coast-fieldwork.jpg" alt="Two people with survey equipment on a coastal trail" width="1066" height="800" loading="lazy">
-                                <figcaption>Fieldwork on the coast</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/campanile.jpg" alt="The Berkeley Campanile at dusk with the moon behind it" width="661" height="800" loading="lazy">
-                                <figcaption>Campanile, Berkeley campus</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/guitar-polaroid.jpg" alt="A polaroid of someone playing electric guitar, propped on a plant pot" width="576" height="800" loading="lazy">
-                                <figcaption>Learning guitar</figcaption>
-                            </figure>
-                            <figure class="carousel-item">
-                                <img src="assets/photos/tidepool-star.jpg" alt="A purple sea star on a barnacle-covered rock" width="800" height="1066" loading="lazy">
-                                <figcaption>Tidepooling</figcaption>
-                            </figure>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section class="projects-section" id="projects">
-            <h1 class="page-title">Projects</h1>
-            
-            <div class="projects-container">
-                <div class="project-card">
-                    <h2 class="project-title">Opportunity Tracker</h2>
-                    <p class="project-category">Automation &amp; Systems</p>
-                    <p class="project-description">
-                        Scrapes job postings from 5+ sources daily: YC, Simplify, Ashby, Greenhouse, Workday, and company career pages. Filters into Notion and sends weekly digests with deadline reminders. Automatically catches up missed tasks if your Mac was offline.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Notion API</span>
-                        <span class="tag">Playwright</span>
-                        <span class="tag">macOS launchd</span>
-                        <span class="tag">Web scraping</span>
-                    </div>
-                    <a href="https://github.com/zoelie-kim/opportunity-tracker" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-                </div>
-                <div class="project-card">
-                    <h2 class="project-title">EEG Gait Decoder</h2>
-                    <p class="project-category">ML &amp; Neurotechnology</p>
-                    <p class="project-description">
-                        Hybrid TCN-LSTM pipeline to decode gait phase and ankle angle from 64-channel EEG, with applications in neuroprosthetics and BCI. Achieved AUC 0.924 for heel-strike detection and R² of 0.735 for ankle angle prediction. Presented at conference with Neurotech@Berkeley, April 2026.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">TCN</span>
-                        <span class="tag">LSTM</span>
-                        <span class="tag">EEG</span>
-                        <span class="tag">BCI</span>
-                    </div>
-                    <a href="assets/Gait%20Intent%20Decoding%20Poster.pdf" class="project-link" target="_blank" rel="noopener noreferrer">View Poster →</a>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">
@@ -176,71 +54,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // Page view toggle
-        const aboutBtn = document.getElementById('aboutBtn');
-        const backBtn = document.getElementById('backBtn');
-        const projectsBtn = document.getElementById('projectsBtn');
-        const heroSection = document.getElementById('heroSection');
-        const aboutSection = document.getElementById('aboutSection');
-        const body = document.body;
-
-        function showAbout() {
-            // Hide icons immediately with no delay
-            const socialIcons = document.querySelector('.social-icons');
-            if (socialIcons) {
-                socialIcons.style.transition = 'none';
-                socialIcons.style.opacity = '0';
-                socialIcons.style.visibility = 'hidden';
-                socialIcons.style.pointerEvents = 'none';
-            }
-            
-            // Then transition the sections
-            heroSection.classList.add('hidden');
-            aboutSection.classList.add('active');
-            body.classList.add('about-view');
-        }
-
-        function showHome() {
-            heroSection.classList.remove('hidden');
-            aboutSection.classList.remove('active');
-            body.classList.remove('about-view');
-            
-            // Show icons again - restore transition and visibility
-            const socialIcons = document.querySelector('.social-icons');
-            if (socialIcons) {
-                socialIcons.style.transition = '';
-                socialIcons.style.opacity = '1';
-                socialIcons.style.visibility = 'visible';
-                socialIcons.style.pointerEvents = 'auto';
-            }
-            
-        }
-
-        aboutBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showAbout();
-        });
-        
-        backBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showHome();
-        });
-
-        projectsBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const projectsSection = document.getElementById('projects');
-            const navbar = document.querySelector('.navbar');
-            const navHeight = navbar ? navbar.offsetHeight : 0;
-            const elementPosition = projectsSection.getBoundingClientRect().top + window.pageYOffset;
-            const offsetPosition = elementPosition - navHeight - 20; // Extra 20px for closer spacing
-            
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: 'smooth'
-            });
-        });
-    </script>
 </body>
 </html>
-

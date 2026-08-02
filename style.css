@@ -16,14 +16,9 @@ html {
     --color-white: #ffffff;
     --color-gray: #f4f4f4;
     --color-silver: #767676;
-    --color-overlay: #0000003d;
-    --color-red: #DB1216;
-    --color-green: #04A32A;
-    --color-blue-bg: #F0F8FF; /* Light blue - update with exact color from image */
-    --color-blue-nav: #E0EFFF; /* Slightly darker blue for navbar */
+    --color-blue-bg: #F0F8FF;
     --radius-sm: 10px;
     --radius-md: 16px;
-    --radius-lg: 20px;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.03), 0 12px 40px rgba(0, 0, 0, 0.08);
     --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -99,7 +94,7 @@ body {
     color: var(--color-silver);
 }
 
-.nav-link.active,
+.nav-links a.active,
 .nav-logo.active {
     font-weight: 600;
     color: var(--color-black);
@@ -119,21 +114,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 200px);
+    /* The landing page has no navbar — the hero card carries navigation — so
+       the hero owns the full viewport height. */
+    min-height: calc(100vh - 140px);
     padding: 5rem 2rem;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.hero-section.hidden {
-    opacity: 0;
-    transform: translateY(-20px);
-    pointer-events: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    visibility: hidden;
 }
 
 /* Scroll Divider */
@@ -266,13 +250,6 @@ body {
     transition: opacity 0.1s ease, visibility 0.1s ease;
 }
 
-.hero-section.hidden .social-icons {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.05s ease, visibility 0.05s ease;
-}
-
 .icon-button {
     display: flex;
     align-items: center;
@@ -338,51 +315,75 @@ body {
     transform: translateY(0);
 }
 
-body.about-view .projects-section {
-    display: none;
-}
-
-.projects-container {
+/* Each project is a row: metadata, then the writing, then an optional image.
+   The trailing `auto` column collapses to nothing when .project-visual is
+   omitted, which is what lets a project exist without a photo. */
+.project-entry {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 0;
-}
-
-.project-card {
-    background-color: var(--color-white);
-    border: var(--border-subtle);
-    border-radius: var(--radius-sm);
-    padding: 2.25rem 2.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
+    grid-template-columns: 8rem 1fr auto;
+    gap: 2.5rem;
+    align-items: start;
+    padding: 3.5rem 0;
+    border-top: var(--border-subtle);
     opacity: 0;
     transform: translateY(20px);
-    box-shadow: var(--shadow-sm);
-    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.project-card.visible {
+.project-entry.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.project-card:hover {
-    box-shadow: var(--shadow-card-hover);
-    border-color: rgba(0, 0, 0, 0.12);
-    transform: translateY(-3px);
+.project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding-top: 0.4rem;
 }
 
-.project-card.visible:hover {
-    transform: translateY(-3px);
+.project-year {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-silver);
+    letter-spacing: 0.15em;
+}
+
+.project-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    max-width: 42rem;
+}
+
+.project-visual {
+    margin: 0;
+    width: 260px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    background-color: var(--color-gray);
+}
+
+.project-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 .project-title {
-    font-size: 1.375rem;
+    font-size: 1.75rem;
     font-weight: 500;
     letter-spacing: 0.02em;
-    margin-bottom: 0.5rem;
+}
+
+/* Rows underline rather than lift — the lift gesture belongs to cards, and a
+   full-width row rising off the page reads as a glitch. */
+.project-entry:hover .project-title {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
 }
 
 .project-category {
@@ -391,7 +392,6 @@ body.about-view .projects-section {
     color: var(--color-silver);
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    margin-bottom: 0.75rem;
 }
 
 .project-description {
@@ -400,7 +400,6 @@ body.about-view .projects-section {
     color: var(--color-black);
     opacity: 0.72;
     line-height: 1.75;
-    flex-grow: 1;
     letter-spacing: 0.01em;
 }
 
@@ -441,79 +440,8 @@ body.about-view .projects-section {
 
 /* About Section */
 .about-section {
-    display: none;
     min-height: calc(100vh - 200px);
-    padding: 5rem 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    position: relative;
-}
-
-/* About Section Decorative Elements */
-.about-decoration {
-    position: absolute;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.about-decoration-top-right {
-    top: 3rem;
-    right: 3rem;
-    width: 200px;
-    height: 200px;
-}
-
-.about-decoration-bottom-left {
-    bottom: 3rem;
-    left: 3rem;
-    width: 200px;
-    height: 200px;
-}
-
-.about-decoration svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.two-column-reveal {
-    position: relative;
-    z-index: 2;
-}
-
-.about-section.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Back Button */
-.back-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: none;
-    border: none;
-    color: var(--color-black);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 0.5rem 0;
-    margin-bottom: 4rem;
-    transition: opacity 0.2s ease;
-}
-
-.back-button:hover {
-    opacity: 0.6;
-}
-
-.back-button svg {
-    width: 16px;
-    height: 16px;
+    padding: 5rem 2rem 6rem 2rem;
 }
 
 .about-text {
@@ -543,7 +471,8 @@ body.about-view .projects-section {
 
 /* Photo Carousel */
 .photo-carousel {
-    margin-top: 4.5rem;
+    margin-top: 2rem;
+    padding-bottom: 4rem;
 }
 
 /* Positioning context for the overlaid arrows. */
@@ -660,125 +589,6 @@ body.about-view .projects-section {
     }
 }
 
-/* Two-Column Reveal */
-.two-column-reveal {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.column-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 3rem;
-}
-
-.reveal-item {
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.reveal-item:hover,
-.reveal-item.active {
-    opacity: 1;
-}
-
-.reveal-item:not(.active) {
-    opacity: 0.6;
-}
-
-.reveal-statement {
-    font-size: 1.25rem;
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    color: var(--color-silver);
-    display: inline-block;
-    line-height: 1.5;
-    transition: color 0.25s ease;
-    position: relative;
-    cursor: pointer;
-}
-
-.reveal-statement::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--color-black);
-    transition: width 0.3s ease;
-}
-
-.reveal-item:hover .reveal-statement::after {
-    width: 100%;
-}
-
-.reveal-item:hover .reveal-statement {
-    color: var(--color-black);
-    opacity: 1;
-}
-
-.reveal-item.active .reveal-statement {
-    color: var(--color-black);
-}
-
-.reveal-content {
-    display: none;
-}
-
-.column-right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem 0;
-}
-
-.reveal-expanded {
-    font-size: 0.9375rem;
-    font-weight: 400;
-    color: var(--color-silver);
-    line-height: 1.8;
-    letter-spacing: 0.01em;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    max-width: 100%;
-}
-
-.reveal-expanded p {
-    margin: 0;
-}
-
-/* Responsive for overlay */
-@media (max-width: 768px) {
-    .two-column-reveal {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .column-right {
-        display: none;
-    }
-    
-    .reveal-content {
-        display: block;
-        margin-top: 1rem;
-        opacity: 0;
-        max-height: 0;
-        overflow: hidden;
-        transition: opacity 0.3s ease, max-height 0.3s ease, margin-top 0.3s ease;
-    }
-    
-    .reveal-item.active .reveal-content {
-        opacity: 1;
-        max-height: 200px;
-        margin-top: 1rem;
-    }
-}
-
 /* Footer */
 .footer {
     background-color: var(--color-white);
@@ -862,22 +672,32 @@ body.about-view .projects-section {
         font-size: 0.9375rem;
     }
     
-    .back-button {
-        margin-bottom: 3rem;
-    }
-    
     .scroll-divider {
         height: 32px;
         margin-top: 3.5rem;
     }
 
-    .projects-container {
+    /* Stack the row: metadata, then writing, then image. The meta line goes
+       horizontal so year and category read as one caption above the title. */
+    .project-entry {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.25rem;
+        padding: 2.5rem 0;
     }
 
-    .project-card {
-        padding: 1.5rem;
+    .project-meta {
+        flex-direction: row;
+        gap: 0.75rem;
+        padding-top: 0;
+    }
+
+    .project-visual {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
     }
 
     .page-title {
