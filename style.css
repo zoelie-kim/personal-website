@@ -17,6 +17,11 @@ html {
     --color-gray: #f4f4f4;
     --color-silver: #767676;
     --color-blue-bg: #F0F8FF;
+    /* Melon + cadet gray. They are each other's accent: the star is cadet on a
+       melon envelope, and melon's shadows are tinted with cadet rather than
+       black, which is what keeps the pair looking related instead of muddy. */
+    --color-melon: #FFCDC1;
+    --color-cadet: #7D99A3;
     --radius-sm: 10px;
     --radius-md: 16px;
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04), 0 4px 16px rgba(0, 0, 0, 0.06);
@@ -74,6 +79,12 @@ body {
     text-transform: uppercase;
 }
 
+/* Landing bar has no logo, so there is nothing for space-between to push
+   against — push the links to the right explicitly. */
+.nav-container-end {
+    justify-content: flex-end;
+}
+
 .nav-links {
     display: flex;
     gap: 2rem;
@@ -114,11 +125,76 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* The landing page has no navbar — the hero card carries navigation — so
-       the hero owns the full viewport height. */
-    min-height: calc(100vh - 140px);
-    padding: 5rem 2rem;
+    /* Everything on the page lives inside this section, sized to fit one
+       screen without scrolling. The subtraction covers the sticky navbar
+       plus the footer. */
+    min-height: calc(100vh - 150px);
+    padding: 2rem 2rem 1.5rem;
+    /* Deliberately larger than the padding inside the bio card, so the split
+       between the top row and the carousel reads as a real gap rather than
+       more of the same spacing. */
+    gap: 2.75rem;
 }
+
+/* Everything written on the left, the photo strip running down the right. The
+   left column is the wider of the two: it carries the reading, the strip is a
+   margin of images beside it. */
+/* Identity on the left, bio on the right, photo strip below. Nothing here is a
+   card — the photo tiles are the only raised surfaces on the page. */
+.landing-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    max-width: 1150px;
+}
+
+/* Photo beside the name rather than above it, which is what buys back the
+   vertical room the strip needs below. */
+.landing-grid .profile-container {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1.75rem;
+    max-width: none;
+    padding: 0;
+}
+
+.landing-grid .profile-photo {
+    width: 148px;
+    height: 148px;
+    flex-shrink: 0;
+}
+
+.landing-grid .hero-title {
+    margin-bottom: 0.45rem;
+}
+
+.landing-grid .tagline {
+    margin-bottom: 1.5rem;
+}
+
+.landing-grid .social-icons {
+    justify-content: flex-start;
+}
+
+/* Bare text on the page — no background, border, shadow or padding. The card
+   is deliberately gone; a short paragraph never filled it, and one less white
+   rounded rectangle is one less thing making the page look generated. */
+.landing-grid .about-text {
+    max-width: 46ch;
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 0.9375rem;
+    line-height: 1.9;
+}
+
 
 /* Scroll Divider */
 .scroll-divider {
@@ -315,15 +391,94 @@ body {
     transform: translateY(0);
 }
 
+/* Filter chips, between the page title and the list. These filter rather than
+   partition — NeuroHealth is both technical and product work, and giving it a
+   single home would misrepresent it — so a project can match more than one. */
+.project-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.filter-chip {
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background-color: transparent;
+    color: var(--color-black);
+    font-family: inherit;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    cursor: pointer;
+    opacity: 0.55;
+    transition: opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.filter-chip:hover {
+    opacity: 1;
+}
+
+.filter-chip.active {
+    background-color: var(--color-black);
+    border-color: var(--color-black);
+    color: var(--color-white);
+    opacity: 1;
+}
+
+/* .project-entry sets display: grid, which would otherwise beat the [hidden]
+   attribute's own display: none. */
+.project-entry[hidden] {
+    display: none;
+}
+
+/* The filter refresh. .filter-enter is the state the rows snap back to;
+   .is-filtering then runs them forward at click speed rather than the slower
+   scroll-reveal timing. */
+.project-entry.filter-enter {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+/* Eased out rather than linear, and slow enough to read as a settle instead
+   of a blink. Travels a little further than feels necessary — over this
+   duration the extra distance is what makes it look unhurried. */
+.projects-list.is-filtering .project-entry {
+    transition: opacity 0.42s, transform 0.42s;
+    transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Has to out-specify the rule above it. If the reset animates instead of
+   snapping, the row is still near opacity 1 when the replay starts and there
+   is nothing left to travel — the whole effect silently does nothing. */
+.projects-list.is-filtering .project-entry.filter-enter {
+    transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .project-entry.filter-enter {
+        opacity: 1;
+        transform: none;
+    }
+
+    .projects-list.is-filtering .project-entry {
+        transition: none;
+    }
+}
+
 /* Each project is a row: metadata, then the writing, then an optional image.
-   The trailing `auto` column collapses to nothing when .project-visual is
-   omitted, which is what lets a project exist without a photo. */
+   The image column stays reserved even for projects without a picture, so
+   every title starts on the same vertical line. Only two of five projects
+   have images, and a ragged left edge would read as broken rather than
+   sparse. */
 .project-entry {
     display: grid;
-    grid-template-columns: 8rem 1fr auto;
+    grid-template-columns: 200px 1fr;
     gap: 2.5rem;
     align-items: start;
-    padding: 3.5rem 0;
+    padding: 3rem 0;
     border-top: var(--border-subtle);
     opacity: 0;
     transform: translateY(20px);
@@ -335,34 +490,35 @@ body {
     transform: translateY(0);
 }
 
-.project-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    padding-top: 0.4rem;
+/* When there is no <figure>, .project-body is the first child — push it into
+   the second column so it lines up with the rows that do have one. */
+.project-entry > .project-body:first-child {
+    grid-column: 2;
 }
 
-.project-year {
+/* Uppercase to match the tags and nav — sentence case was the odd one out
+   among the site's small labels, which is what made it look off. */
+.project-meta {
     font-size: 0.75rem;
     font-weight: 500;
     color: var(--color-silver);
     letter-spacing: 0.15em;
+    text-transform: uppercase;
 }
 
 .project-body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.25rem;
+    gap: 1rem;
     max-width: 42rem;
 }
 
 .project-visual {
     margin: 0;
-    width: 260px;
+    width: 100%;
     border-radius: var(--radius-sm);
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
     background-color: var(--color-gray);
 }
 
@@ -372,19 +528,62 @@ body {
     height: auto;
 }
 
+/* The architecture diagram is tall and portrait, which made it half again the
+   height of every other visual. Cropped to the same 4:3 frame from the top,
+   where the entry point of the flow sits. Nothing is lost by cropping: it is
+   unreadable at thumbnail size either way, so this only has to signal that a
+   system exists, and the link opens it full size. */
+.project-visual.is-diagram {
+    aspect-ratio: 4 / 3;
+}
+
+/* The image is wrapped in a link, so it needs a height to resolve against or
+   the 100% below has nothing to measure and the figure grows to fit instead. */
+.project-visual.is-diagram a {
+    display: block;
+    height: 100%;
+}
+
+.project-visual.is-diagram img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+/* Client logos, not photographs. A photo can bleed to the edges of the column;
+   a logo needs air around it or it reads as a sticker.
+   Each figure sets --logo-plate to its own logo's background colour, because
+   both of these marks have a background baked into the file. Any mismatch
+   shows up as a hard rectangle inside the rounded plate — a box in a box. */
+.project-visual.is-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    aspect-ratio: 4 / 3;
+    background-color: var(--logo-plate, var(--color-white));
+}
+
+/* Each mark grows until it hits the padding, whichever edge it reaches first —
+   a tall mark is bounded by height, a wide one by width. Sizing against the
+   plate rather than a fixed pixel cap means a new logo of any proportion fills
+   the frame without needing its own rule. Source files should be cropped close
+   to the mark; baked-in margin here reads as a small logo, not a roomy one. */
+.project-visual.is-logo img {
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
 .project-title {
     font-size: 1.75rem;
     font-weight: 500;
     letter-spacing: 0.02em;
 }
 
-/* Rows underline rather than lift — the lift gesture belongs to cards, and a
-   full-width row rising off the page reads as a glitch. */
-.project-entry:hover .project-title {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-    text-decoration-thickness: 1px;
-}
+/* No hover state on the row. The title is not a link — only the "View …"
+   line is — and underlining on hover promises a click that does nothing. */
 
 .project-category {
     font-size: 0.75rem;
@@ -394,13 +593,22 @@ body {
     letter-spacing: 0.15em;
 }
 
+/* Color rather than opacity: opacity applies to the whole block, so a <strong>
+   inside it could only get heavier, never darker. Carrying the fade in the
+   color instead leaves the full-strength black free for the bolded parts. */
 .project-description {
     font-size: 0.9375rem;
     font-weight: 400;
-    color: var(--color-black);
-    opacity: 0.72;
+    color: rgba(0, 0, 0, 0.72);
     line-height: 1.75;
     letter-spacing: 0.01em;
+}
+
+/* 600, not the default 700 — Montserrat bold at body size reads as a heading
+   dropped mid-paragraph. */
+.project-description strong {
+    font-weight: 600;
+    color: var(--color-black);
 }
 
 .project-tags {
@@ -434,8 +642,12 @@ body {
     text-transform: uppercase;
 }
 
+/* The underline lives here rather than on the title — this is the only part
+   of the row that actually goes anywhere. */
 .project-link:hover {
-    opacity: 0.6;
+    text-decoration: underline;
+    text-underline-offset: 0.35em;
+    text-decoration-thickness: 1px;
 }
 
 /* About Section */
@@ -471,8 +683,13 @@ body {
 
 /* Photo Carousel */
 .photo-carousel {
-    margin-top: 2rem;
-    padding-bottom: 4rem;
+    margin-top: 0;
+    padding-bottom: 0;
+    width: 100%;
+    max-width: 1150px;
+    /* Lets this shrink inside its container rather than being sized by the
+       track's max-content width. */
+    min-width: 0;
 }
 
 /* Positioning context for the overlaid arrows. */
@@ -517,12 +734,15 @@ body {
     right: 0.875rem;
 }
 
-/* Native horizontal scrolling, so trackpad swipe and touch drag work for free
-   and the buttons just nudge the same scroll position. */
+/* Native scrolling, so trackpad and touch gestures work for free and the
+   buttons just nudge the same scroll position.
+
+   Neither scroll-behavior nor scroll-snap belongs here. Both rewrite scroll
+   positions the script sets: smooth would try to animate every frame of the
+   script's own animation, and snap would tug the strip back after each
+   invisible wrap. script.js handles the easing itself. */
 .carousel-viewport {
     overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x proximity;
     scrollbar-width: none;
 }
 
@@ -536,10 +756,12 @@ body {
 }
 
 .carousel-item {
-    scroll-snap-align: start;
     position: relative;
     flex: 0 0 auto;
-    height: 260px;
+    /* Tied to viewport height so the whole page still fits one screen on a
+       short laptop display, capped at 260px on tall ones. Each photo keeps its
+       own aspect ratio, so the strip has an uneven, unposed rhythm. */
+    height: clamp(170px, 26vh, 260px);
     margin: 0 1rem 0 0;
     border-radius: var(--radius-sm);
     overflow: hidden;
@@ -577,12 +799,8 @@ body {
     transform: translateY(0);
 }
 
-/* Smooth scrolling can trigger motion sensitivity, so jump instantly instead. */
+/* The carousel's own easing is skipped in script.js under this same query. */
 @media (prefers-reduced-motion: reduce) {
-    .carousel-viewport {
-        scroll-behavior: auto;
-    }
-
     .carousel-item figcaption {
         opacity: 1;
         transform: none;
@@ -604,6 +822,39 @@ body {
     font-weight: 400;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+}
+
+/* Two columns stop fitting well before phone width — the text column gets too
+   narrow to read. Below this the grid stacks, the photo goes back above the
+   name, and the page is allowed to scroll, since one screen is not possible. */
+@media (max-width: 900px) {
+    /* minmax(0, 1fr), not a plain 1fr: an fr track has an automatic minimum, so
+       the strip's max-content width would push this column out to several
+       thousand pixels and the photos would never scroll. */
+    .landing-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .landing-grid .profile-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .landing-grid .social-icons {
+        justify-content: center;
+    }
+
+    .landing-grid .about-text {
+        max-width: none;
+    }
+
+    .hero-section {
+        min-height: 0;
+    }
+
+    .carousel-item {
+        height: 240px;
+    }
 }
 
 /* Responsive Design */
@@ -685,10 +936,9 @@ body {
         padding: 2.5rem 0;
     }
 
-    .project-meta {
-        flex-direction: row;
-        gap: 0.75rem;
-        padding-top: 0;
+    /* Stacked on mobile, so the reserved image column is dropped entirely. */
+    .project-entry > .project-body:first-child {
+        grid-column: auto;
     }
 
     .project-visual {

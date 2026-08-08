@@ -12,11 +12,9 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">Zoélie Lord Kim</a>
+        <div class="nav-container nav-container-end">
             <div class="nav-links">
-                <a href="about.html">About</a>
-                <a href="projects.html" class="active">Projects</a>
+                <a href="index.html">Home</a>
             </div>
         </div>
     </nav>
@@ -25,74 +23,116 @@
         <section class="projects-section" id="projects">
             <h1 class="page-title">Projects</h1>
 
+            <!-- These filter the list, they don't partition it: a project lists
+                 every bucket it belongs to in data-categories, space-separated,
+                 and shows up under each one. To add a bucket, add a button here
+                 with a matching data-filter. -->
+            <div class="project-filters" role="group" aria-label="Filter projects by type">
+                <button type="button" class="filter-chip active" data-filter="all" aria-pressed="true">All</button>
+                <button type="button" class="filter-chip" data-filter="technical" aria-pressed="false">Technical</button>
+                <button type="button" class="filter-chip" data-filter="product" aria-pressed="false">Product &amp; Strategy</button>
+                <button type="button" class="filter-chip" data-filter="creative" aria-pressed="false">Creative</button>
+            </div>
+
             <!-- To add a project, copy one <article> block. The .project-visual
-                 figure is optional — leave it out entirely and the layout
+                 figure is optional: leave it out entirely and the layout
                  closes up on its own. -->
             <div class="projects-list">
-                <article class="project-entry">
-                    <div class="project-meta">
-                        <p class="project-year">2026</p>
-                        <p class="project-category">Neurotech</p>
-                    </div>
+                <article class="project-entry" data-categories="technical product">
+                    <figure class="project-visual is-logo">
+                        <img src="assets/logos/simply-balanced-logo.png" alt="Simply Balanced logo" width="440" height="294" loading="lazy">
+                    </figure>
                     <div class="project-body">
-                        <h2 class="project-title">EEG Gait Decoder</h2>
+                        <p class="project-meta">2026 &middot; Simply Balanced</p>
+                        <h2 class="project-title">Patient Assessment and Prescription App</h2>
                         <p class="project-description">
-                            Hybrid TCN-LSTM pipeline to decode gait phase and ankle angle from 64-channel EEG, with applications in neuroprosthetics and BCI. Achieved AUC 0.924 for heel-strike detection and R² of 0.735 for ankle angle prediction. Presented at conference with Neurotech@Berkeley, April 2026.
+                            Contracted by a physician partnering with Simply Balanced, a movement studio in San Francisco, to build the practice's <strong>first patient-facing app</strong> as <strong>sole designer and developer</strong>, translating her clinical protocol into product specs, interface design, and production code. The app administers and scores a <strong>nine-assessment battery</strong> covering balance, memory, and reaction, used across cognitive and motor conditions, from Parkinson's and age-related cognitive decline to pediatric ADHD and post-concussion recovery. Next comes the prescription engine, which will convert those scores into the movement and exercise plan she currently writes by hand, encoding her decision rules through <strong>prompt hill-climbing</strong> against past patient cases. A first beta with a group of adolescents launches Fall 2026, testing how younger patients interact with the app and gathering cases to sharpen the engine.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">PyTorch</span>
-                            <span class="tag">TCN</span>
-                            <span class="tag">LSTM</span>
-                            <span class="tag">EEG</span>
-                            <span class="tag">BCI</span>
+                            <span class="tag">Prompt optimization</span>
+                            <span class="tag">Product spec</span>
+                            <span class="tag">Product design</span>
+                            <span class="tag">React Native</span>
                         </div>
-                        <a href="assets/Gait%20Intent%20Decoding%20Poster.pdf" class="project-link" target="_blank" rel="noopener noreferrer">View Poster →</a>
                     </div>
+                </article>
+
+                <article class="project-entry" data-categories="technical">
                     <figure class="project-visual">
                         <img src="assets/photos/neurotech-poster.jpg" alt="Presenting the gait intent decoding poster at the California Neurotech Conference" width="1066" height="800" loading="lazy">
                     </figure>
-                </article>
-
-                <article class="project-entry">
-                    <div class="project-meta">
-                        <p class="project-year">2026</p>
-                        <p class="project-category">Automation</p>
-                    </div>
                     <div class="project-body">
-                        <h2 class="project-title">Opportunity Tracker</h2>
+                        <p class="project-meta">2026 &middot; Neurotech@Berkeley</p>
+                        <h2 class="project-title">Predicting Movement Intent from Brain Signals</h2>
                         <p class="project-description">
-                            Scrapes job postings from 5+ sources daily: YC, Simplify, Ashby, Greenhouse, Workday, and company career pages. Filters into Notion and sends weekly digests with deadline reminders. Automatically catches up missed tasks if your Mac was offline.
+                            <strong>Project manager for a five-person ML team</strong> predicting walking movement from brain signals, setting the roadmap, assigning work, and managing delivery timelines. A hybrid <strong>TCN-LSTM</strong> model predicted gait from 64-channel EEG alone, separating true heel-strikes from false ones with <strong>0.924 AUC</strong> and accounting for <strong>74%</strong> of the variation in ankle angle. Presented at the California Neurotech Conference in April 2026, the research targets prosthetic control for patients with spinal cord injuries.
                         </p>
                         <div class="project-tags">
+                            <span class="tag">Project management</span>
+                            <span class="tag">Model evaluation</span>
+                            <span class="tag">TCN-LSTM</span>
+                            <span class="tag">PyTorch</span>
+                        </div>
+                        <a href="assets/Gait%20Intent%20Decoding%20Poster.pdf" class="project-link" target="_blank" rel="noopener noreferrer">View Poster →</a>
+                    </div>
+                </article>
+
+                <article class="project-entry" data-categories="technical">
+                    <!-- The diagram is far too dense to read at column width, so the
+                         thumbnail only signals that a real system sits behind it. The
+                         link is what makes it worth including: it opens full size. -->
+                    <figure class="project-visual is-diagram">
+                        <a href="assets/diagrams/opportunity-tracker-architecture.png" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/diagrams/opportunity-tracker-architecture.png" alt="Architecture diagram: launchd wakes a scheduler that runs three scrapers into Notion, then a digest emailer" width="1041" height="1200" loading="lazy">
+                        </a>
+                    </figure>
+                    <div class="project-body">
+                        <p class="project-meta">2026 &middot; Personal project</p>
+                        <h2 class="project-title">Job Board Scraper with Weekly Digests</h2>
+                        <p class="project-description">
+                            Automates the daily process of checking six job boards by hand. Scrapes YC, Simplify, Ashby, Greenhouse, Workday, and company career pages, filtering each posting against a defined set of role criteria. Matching roles are added to a Notion database and sent in a weekly email with deadline reminders for programs on fixed application windows.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Workflow automation</span>
                             <span class="tag">Python</span>
-                            <span class="tag">Notion API</span>
                             <span class="tag">Playwright</span>
-                            <span class="tag">macOS launchd</span>
                             <span class="tag">Web scraping</span>
+                            <span class="tag">Notion API</span>
                         </div>
                         <a href="https://github.com/zoelie-kim/opportunity-tracker" class="project-link" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
                     </div>
                 </article>
 
-                <article class="project-entry">
-                    <div class="project-meta">
-                        <p class="project-year">2022</p>
-                        <p class="project-category">Film</p>
-                    </div>
+                <article class="project-entry" data-categories="product">
+                    <figure class="project-visual is-logo" style="--logo-plate: #fdfeff;">
+                        <img src="assets/logos/mirror-progress-logo.png" alt="Mirror Progress logo" width="190" height="178" loading="lazy">
+                    </figure>
                     <div class="project-body">
-                        <h2 class="project-title">Multilingualism</h2>
+                        <p class="project-meta">2026 &middot; Mirror Progress</p>
+                        <h2 class="project-title">Enterprise Outreach Database</h2>
                         <p class="project-description">
-                            I made this short film my junior year of high school where I interviewed my dad and some of my friends about what it's like to grow up speaking more than one language. <i lang="fr">Chacun avait une réponse différente.</i>
+                            Mirror Progress is a small team building AI data infrastructure, including searchable knowledge layers and document retrieval, for firms in architecture, engineering, and professional services. Built an account map for a target enterprise, profiling and scoring stakeholders on title, seniority, and history with comparable work, then identifying a subsidiary as the lower-friction entry point into the parent company. The founder adopted the approach for enterprise outreach.
                         </p>
                         <div class="project-tags">
-                            <span class="tag">Short film</span>
-                            <span class="tag">Documentary</span>
+                            <span class="tag">Account mapping</span>
+                            <span class="tag">Prioritization framework</span>
+                            <span class="tag">GTM strategy</span>
                         </div>
-                        <a href="https://youtu.be/TXkzDDpkzY4" class="project-link" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>
                     </div>
+                </article>
+
+                <article class="project-entry" data-categories="creative">
                     <figure class="project-visual">
                         <img src="assets/photos/multilingualism-still.jpg" alt="Title card from the short film Multilingualism, over a shot of one of the interviewees" width="800" height="450" loading="lazy">
                     </figure>
+                    <div class="project-body">
+                        <p class="project-meta">2022 &middot; Short film</p>
+                        <h2 class="project-title">Multilingualism</h2>
+                        <p class="project-description">
+                            A short documentary from junior year of high school, interviewing family and friends about what it's like to grow up speaking more than one language. <i lang="fr">Chacun avait une réponse différente.</i>
+                        </p>
+                        <a href="https://youtu.be/TXkzDDpkzY4" class="project-link" target="_blank" rel="noopener noreferrer">Watch on YouTube →</a>
+                    </div>
                 </article>
             </div>
         </section>
