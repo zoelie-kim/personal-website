@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Unlisted by design, same as /donko. noindex rather than a robots.txt
+         Disallow: Google has to be able to fetch this page for OAuth review,
+         it just must not index it. -->
+    <meta name="robots" content="noindex">
+    <title>donko &mdash; Privacy Policy</title>
+    <style>
+        :root { color-scheme: light; }
+        body {
+            margin: 0;
+            padding: 4rem 1.5rem;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #000;
+            background: #fff;
+        }
+        main { max-width: 34rem; margin: 0 auto; }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin: 0 0 0.5rem;
+        }
+        .updated { color: #767676; font-size: 0.9375rem; margin: 0 0 2rem; }
+        p { margin: 0 0 1.5rem; }
+        a { color: #000; text-decoration: underline; text-underline-offset: 0.2em; }
+        a:hover { color: #767676; }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.9375em;
+            background: #f4f4f4;
+            padding: 0.1em 0.35em;
+            border-radius: 3px;
+        }
+        .back { font-size: 0.9375rem; margin-bottom: 2rem; }
+        .back a { color: #767676; text-decoration: none; }
+        .back a:hover { color: #000; }
+    </style>
+</head>
+<body>
+    <main>
+        <p class="back"><a href="/donko">&larr; donko</a></p>
+
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: September 15, 2026</p>
+
+        <p>donko is a personal AI assistant that I run on my own private server. I am
+        its only user. It is not offered to anyone else, so no one else's data is ever
+        involved.</p>
+
+        <p>The only data donko accesses is my own Google Calendar, through two scopes.
+        <code>calendar.app.created</code> lets it write only to calendars it creates
+        itself &mdash; it cannot modify my existing calendars. <code>calendar.readonly</code>
+        lets it read my calendars.</p>
+
+        <p>donko does not collect, store, sell, or share this data with any third
+        party. The OAuth token it uses is kept on my own server and nowhere else.
+        Calendar data is used only to answer my own requests and is not sent anywhere
+        beyond the Google APIs it was retrieved from.</p>
+
+        <p>Access can be revoked at any time at
+        <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener noreferrer">myaccount.google.com</a>
+        under Security &rarr; third-party access.</p>
+
+        <p>Questions about this policy: <a href="mailto:zoelie.kim@gmail.com">zoelie.kim@gmail.com</a></p>
+    </main>
+</body>
+</html>

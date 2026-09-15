@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This page exists only to satisfy Google's OAuth publishing requirements.
+         It is deliberately unlisted: nothing on the portfolio links here, and
+         noindex keeps it out of search results. Do not add it to the nav. -->
+    <meta name="robots" content="noindex">
+    <title>donko</title>
+    <style>
+        :root { color-scheme: light; }
+        body {
+            margin: 0;
+            padding: 4rem 1.5rem;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 1.0625rem;
+            line-height: 1.7;
+            color: #000;
+            background: #fff;
+        }
+        main { max-width: 34rem; margin: 0 auto; }
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin: 0 0 2rem;
+        }
+        p { margin: 0 0 1.5rem; }
+        a { color: #000; text-decoration: underline; text-underline-offset: 0.2em; }
+        a:hover { color: #767676; }
+        code {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.9375em;
+            background: #f4f4f4;
+            padding: 0.1em 0.35em;
+            border-radius: 3px;
+        }
+        .contact { color: #767676; font-size: 0.9375rem; margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>donko</h1>
+
+        <p>donko is a personal AI assistant I built for myself. It runs on my own
+        private server and I am its only user &mdash; there are no other users, no
+        sign-ups, and no public interface.</p>
+
+        <p>The only outside data it touches is my own Google Calendar. It uses two
+        scopes: <code>calendar.app.created</code>, which lets it write only to
+        calendars it creates itself and not to any of my existing ones, and
+        <code>calendar.readonly</code>, which lets it read my calendars. It does not
+        collect, store, sell, or share data with any third party.</p>
+
+        <p><a href="/donko/privacy">Privacy policy</a></p>
+
+        <p class="contact">Questions: <a href="mailto:zoelie.kim@gmail.com">zoelie.kim@gmail.com</a></p>
+    </main>
+</body>
+</html>
