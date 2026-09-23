@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Projects - Zoelie Lord Kim</title>
+    <title>Work - Zoelie Lord Kim</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,8 +20,31 @@
     </nav>
 
     <main class="main-content">
-        <section class="projects-section" id="projects">
-            <h1 class="page-title">Projects</h1>
+        <section class="projects-section" id="work">
+            <h1 class="page-title">Work</h1>
+
+            <h2 class="section-title">Experience</h2>
+
+            <!-- Experience entries reuse .project-entry for its card styling and
+                 scroll reveal, but live outside .projects-list so the filter
+                 chips below never hide them. -->
+            <div class="experience-list">
+                <article class="project-entry">
+                    <figure class="project-visual is-logo">
+                        <img src="assets/logos/rocketable-logo.jpeg" alt="Rocketable logo" width="200" height="200" loading="lazy">
+                    </figure>
+                    <div class="project-body">
+                        <p class="project-meta">Jun &ndash; Aug 2026 &middot; Rocketable</p>
+                        <h3 class="project-title">Data Science Intern</h3>
+                        <p class="project-description">
+                            Rocketable (YC W25) acquires profitable software products and builds the AI agent systems to operate them. I worked three months on the customer experience and support systems of one of the company's products. The work covered prompt engineering and LLM evaluation, agent development across OpenAI and Anthropic models, AI cost analysis, and customer conversation analysis at scale.
+                        </p>
+                        <a href="rocketable/" class="project-link">View projects &rarr;</a>
+                    </div>
+                </article>
+            </div>
+
+            <h2 class="section-title">Projects</h2>
 
             <!-- These filter the list, they don't partition it: a project lists
                  every bucket it belongs to in data-categories, space-separated,
@@ -46,7 +69,7 @@
                         <p class="project-meta">2026 &middot; Simply Balanced</p>
                         <h2 class="project-title">Patient Assessment and Prescription App</h2>
                         <p class="project-description">
-                            Contracted by a physician partnering with Simply Balanced, a movement studio in San Francisco, to build the practice's <strong>first patient-facing app</strong> as <strong>sole designer and developer</strong>, translating her clinical protocol into product specs, interface design, and production code. The app administers and scores a <strong>nine-assessment battery</strong> covering balance, memory, and reaction, used across cognitive and motor conditions, from Parkinson's and age-related cognitive decline to pediatric ADHD and post-concussion recovery. Next comes the prescription engine, which will convert those scores into the movement and exercise plan she currently writes by hand, encoding her decision rules through <strong>prompt hill-climbing</strong> against past patient cases. A first beta with a group of adolescents launches Fall 2026, testing how younger patients interact with the app and gathering cases to sharpen the engine.
+                            Contracted by a physician partnering with Simply Balanced, a movement studio in San Francisco, to build the practice's <strong>first patient-facing app</strong> as <strong>sole designer and developer</strong>, translating her clinical protocol into product specs, interface design, and production code. The app administers and scores a <strong>9-test battery</strong> covering balance, memory, and reaction, used across cognitive and motor conditions, from Parkinson's and age-related cognitive decline to pediatric ADHD and post-concussion recovery. Next comes the prescription engine, which will convert those scores into the movement and exercise plan she currently writes by hand, encoding her decision rules, <strong>tuned against the doctor's past prescriptions</strong>. A first beta with a youth cohort launches December 2026, testing how younger patients interact with the app and gathering cases to sharpen the engine.
                         </p>
                         <div class="project-tags">
                             <span class="tag">Prompt optimization</span>
@@ -74,6 +97,40 @@
                             <span class="tag">PyTorch</span>
                         </div>
                         <a href="assets/Gait%20Intent%20Decoding%20Poster.pdf" class="project-link" target="_blank" rel="noopener noreferrer">View Poster →</a>
+                    </div>
+                </article>
+
+                <article class="project-entry" data-categories="technical">
+                    <div class="project-body">
+                        <p class="project-meta">2026 &middot; Personal project</p>
+                        <h2 class="project-title">A Self-Improving Personal Assistant Agent</h2>
+                        <p class="project-description">
+                            A personal assistant built on a cloud-hosted Hermes agent, running as <strong>four scoped workspaces</strong> in Slack. Each workspace has its own system prompt, skills, permissions, and working directory, compiled from a single config file. The agent's full definition lives in a git repo that it <strong>pulls daily and applies to itself</strong>. Obligations mentioned in chat become reminders and calendar events, and the OAuth scope limits its writes to calendars it created itself.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Agent design</span>
+                            <span class="tag">Prompt engineering</span>
+                            <span class="tag">Permissions design</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Bash</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="project-entry" data-categories="technical">
+                    <div class="project-body">
+                        <p class="project-meta">2026 &middot; Personal project</p>
+                        <h2 class="project-title">An AI Agent That Curates a Weekly Newsletter</h2>
+                        <p class="project-description">
+                            Automates picking the AI news worth reading from a set of RSS sources. A crawler pulls new items daily, a Claude summarizer writes one or two sentences on each, and a Curator agent ranks them and assigns sections. A second pass cuts the shortlist to twelve to fifteen items, recording a reason for each cut. Picks matched hand-picked selections <strong>86% of the time</strong> on a 25-item validation test.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Evaluation design</span>
+                            <span class="tag">Prompt engineering</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Supabase</span>
+                            <span class="tag">Claude API</span>
+                        </div>
                     </div>
                 </article>
 

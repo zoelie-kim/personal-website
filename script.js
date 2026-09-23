@@ -1,8 +1,15 @@
-// Intersection Observer for projects section
-const projectsSection = document.getElementById('projects');
+// Intersection Observer for the work section. Selected by CLASS, not id: the
+// Rocketable detail page uses the same section wrapper under a different id,
+// and an id lookup returns null there, leaving that whole page at opacity 0.
+const projectsSection = document.querySelector('.projects-section');
 if (projectsSection) {
+    // threshold 0, not a fraction: this observes the whole work section, which
+    // is already ~4000px and grows with every entry added. A fractional
+    // threshold has to be met in pixels, so it gets harder to satisfy as the
+    // page grows and would eventually strand the section at opacity 0.
+    // rootMargin is what holds the reveal until the section is properly up.
     const observerOptions = {
-        threshold: 0.1,
+        threshold: 0,
         rootMargin: '0px 0px -100px 0px'
     };
 
@@ -43,12 +50,15 @@ document.querySelectorAll('.project-entry').forEach(row => {
 const filterChips = document.querySelectorAll('.filter-chip');
 
 if (filterChips.length) {
-    const projectEntries = document.querySelectorAll('.project-entry');
     const projectsList = document.querySelector('.projects-list');
+    // Scoped to the projects list on purpose: Experience entries above reuse
+    // .project-entry for styling, and a page-wide query would hide them on
+    // every filter click.
+    const projectEntries = projectsList.querySelectorAll('.project-entry');
 
-    // Filtering can be invisible from the top of the page: NeuroHealth is the
-    // first row under most filters, so the first screen looks identical before
-    // and after. Replaying a quick fade-up on the matching rows makes the click
+    // Filtering can be invisible from the top of the page: Simply Balanced is
+    // the first row under most filters, so the first screen looks identical
+    // before and after. Replaying a quick fade-up on the matching rows makes the click
     // register without having to scroll. Deliberately much faster than the 0.6s
     // scroll reveal — this is button feedback, not an entrance.
     const STAGGER_MS = 55;

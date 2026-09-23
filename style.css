@@ -246,7 +246,11 @@ body {
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: 40% 60%;
+    /* The source is pre-cropped square and already centred on her face, so no
+       object-position nudge is needed. Cropping the file rather than shifting
+       the crop window also spends the pixels on her instead of on bridge that
+       a 200px circle was never going to show. */
+    object-position: 50% 50%;
     border: none;
     box-shadow: none;
 }
@@ -389,6 +393,115 @@ body {
 .projects-section.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Section headings on the Work page. Deliberately quieter than .page-title so
+   the hierarchy reads Work > Experience / Projects rather than three headings
+   of equal weight. Matches .project-meta's uppercase label treatment. */
+.section-title {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-silver);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+}
+
+/* The gap that keeps Experience and Projects from reading as one list. */
+.experience-list {
+    margin-bottom: 5rem;
+}
+
+/* Lead paragraph on a detail page, between the title and the entries. Sized
+   between .project-description and .page-title so it reads as an introduction
+   rather than as the first entry. */
+.page-intro {
+    max-width: 62ch;
+    margin-bottom: 3.5rem;
+    color: var(--color-silver);
+}
+
+/* Detail-page entries use bullets, not prose: seven projects in a row are
+   easier to scan as points, and it keeps the reference-document wording
+   intact instead of re-prosing it. */
+.project-points {
+    margin: 0;
+    padding-left: 1.1rem;
+    list-style: disc;
+}
+
+.project-points li {
+    margin-bottom: 0.75rem;
+}
+
+.project-points li:last-child {
+    margin-bottom: 0;
+}
+
+/* Report thumbnails. These inherit the .is-diagram top-crop, which is doing
+   more work here than it does for the architecture diagram: the reports run to
+   5750px tall, so the visible frame is a few percent of the whole page. That
+   makes the crop misleading on its own, hence the explicit call to action —
+   without it the thumbnail looks like the entire artifact. */
+.report-figure {
+    position: relative;
+}
+
+.report-cta {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.5rem 0.625rem 0.5rem;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-white);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
+}
+
+/* Report viewer pages. The sheet is capped at a comfortable reading width and
+   the image keeps its natural aspect, so a tall report simply makes the page
+   long and you scroll it like a document. */
+.report-page {
+    padding: 4rem 2rem 6rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.report-page-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin: 0.5rem 0 0.75rem;
+}
+
+.report-caption {
+    max-width: 62ch;
+    margin-bottom: 2.5rem;
+    color: var(--color-silver);
+}
+
+.report-sheet {
+    margin: 0 0 2.5rem;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background-color: var(--color-white);
+}
+
+.report-sheet img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .report-page {
+        padding: 2.5rem 1rem 4rem;
+    }
 }
 
 /* Filter chips, between the page title and the list. These filter rather than

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Rocketable - Zoelie Lord Kim</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Detail page for the Rocketable entry on the Work page. Paths are all
+         ../ relative because this lives one folder down, which buys the clean
+         /rocketable URL. -->
+    <nav class="navbar">
+        <div class="nav-container nav-container-end">
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../projects.html">Work</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="projects-section" id="rocketable">
+            <p class="project-meta">Jun &ndash; Aug 2026 &middot; Rocketable</p>
+            <h1 class="page-title">Data Science Intern</h1>
+
+            <p class="page-intro">
+                Rocketable (YC W25) acquires profitable software products and builds the AI agent systems to operate them. I worked three months on the customer experience and support systems of one of the company's products. The work covered prompt engineering and LLM evaluation, agent development across OpenAI and Anthropic models, AI cost analysis, and customer conversation analysis at scale. Projects are ordered by impact.
+            </p>
+
+            <!-- Project entries reuse .project-entry for card styling and the
+                 scroll reveal. .report-figure handles the very tall report
+                 images, which cannot simply be scaled down to column width. -->
+            <div class="experience-list">
+
+                <article class="project-entry">
+                    <figure class="project-visual is-diagram report-figure">
+                        <a href="reports/media-recovery-classifier.html">
+                            <img src="../assets/reports/media-recovery-classifier-report.png" alt="Media-recovery classifier experiment report" width="1440" height="5750" loading="lazy">
+                            <span class="report-cta">View full report &rarr;</span>
+                        </a>
+                    </figure>
+                    <div class="project-body">
+                        <h2 class="project-title">Media-recovery classifier and implementation cost report</h2>
+                        <ul class="project-points">
+                            <li><strong>93.75% recall</strong> detecting recoverable recording problems before customers report them; an LLM labels ffmpeg-extracted evidence packets with a prompt optimized across four automated candidate rounds, lifting validation accuracy from 80% to 90%</li>
+                            <li><strong>88.7% lower API cost</strong> from an ablation round, cutting the evidence packet to under a quarter of its size with no loss in test accuracy</li>
+                            <li>The implementation report accounts for the full cost of running the system in production (per-recording AI cost of ~$0.03, projected monthly and annual spend, hosting options); the system is now being integrated on the basis of that report</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-entry">
+                    <figure class="project-visual is-diagram report-figure">
+                        <a href="reports/cx-quality-classifier.html">
+                            <img src="../assets/reports/cx-quality-classifier-report.png" alt="Customer-experience quality classifier report" width="2010" height="2286" loading="lazy">
+                            <span class="report-cta">View example report &rarr;</span>
+                        </a>
+                    </figure>
+                    <div class="project-body">
+                        <h2 class="project-title">Customer-experience quality classifier for support conversations</h2>
+                        <ul class="project-points">
+                            <li><strong>95% recall</strong> detecting poor customer experiences in completed support conversations, via a prompt-optimized LLM-judge agent built on OpenAI and Anthropic models, released through two versions with continuous monitoring</li>
+                            <li><strong>500+ support conversations</strong> read and hand-labeled from the customer's perspective, building the company's framework for what separates a good customer experience from a bad one, distilled into a generalizable evaluation rubric</li>
+                            <li>Live in production as the company's standard measure of customer-experience quality, scoring every customer support conversation, with the weekly quality report published internally and cited in investor updates</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-entry">
+                    <figure class="project-visual is-diagram report-figure">
+                        <a href="reports/operator-friction.html">
+                            <img src="../assets/reports/operator-friction-report.png" alt="CS operator friction report" width="1440" height="2229" loading="lazy">
+                            <span class="report-cta">View example report &rarr;</span>
+                        </a>
+                    </figure>
+                    <div class="project-body">
+                        <h2 class="project-title">Operator friction analysis and weekly reporting agent</h2>
+                        <ul class="project-points">
+                            <li>Top drivers of friction for the operators directing the company's AI support agent, identified in a written analysis for leadership; drove prompt revisions, the media-recovery classifier, the support intake redesign, and the subscription cancellation investigation; now automated as a weekly agent-published report used as a recurring prioritization input</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-entry">
+                    <div class="project-body">
+                        <h2 class="project-title">Customer support intake redesign</h2>
+                        <ul class="project-points">
+                            <li>Single-tier support intake now live for all customers, collecting only information the system lacks and providing the CS agent an initial triage in place of multiple automated tiers</li>
+                            <li>Redesign informed by analysis of answer engagement, CS-agent usage, and redundancy against internally held data, weighed against customer preference for response speed</li>
+                            <li>A/B test groups designed to validate the flow changes ahead of rollout</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-entry">
+                    <div class="project-body">
+                        <h2 class="project-title">Post-release bug monitoring agent</h2>
+                        <ul class="project-points">
+                            <li>Deployed in Rocketable's internal systems: an agent monitoring support conversations for post-release bugs and crashes, alerting engineers in Slack; designed the clustering and triage logic, working with the founding product manager</li>
+                            <li>~90% detection of known past outages during training</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-entry">
+                    <div class="project-body">
+                        <h2 class="project-title">Subscription cancellation investigation</h2>
+                        <ul class="project-points">
+                            <li>Triaged recently flagged support conversations, sized post-cancellation charge reports as the largest category, and traced the pattern through Stripe, LogRocket, and internal records to inconsistent cancellation states between systems, ruling out erroneous charges</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="project-entry">
+                    <div class="project-body">
+                        <h2 class="project-title">Internal investigations and operations</h2>
+                        <ul class="project-points">
+                            <li>Ongoing troubleshooting of Intercom workflows and backend behavior, alongside portfolio operations: affiliate payouts, payment-card management, and knowledge-base updates</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+
+            <a href="../projects.html" class="project-link">&larr; Back to Work</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026. All rights reserved.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
